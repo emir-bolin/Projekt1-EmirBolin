@@ -1,12 +1,13 @@
 // SUB-class
 public class Vegetable extends Product{
     // Attributes
-    private int weight;
+    private double weight;
 
     // Constructors
     public Vegetable(){}
-    public Vegetable(String name, double price, double weight){
-        super(name, price, weight);
+    public Vegetable(String name, double price, int quantity, double weight){
+        super(name, price, quantity);
+        this.weight = weight;
     }
 
     // Methods
