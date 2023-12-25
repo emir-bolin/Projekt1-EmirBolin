@@ -5,12 +5,8 @@ public class Vegetable extends Product{
 
     // Constructors
     public Vegetable(){}
-    public Vegetable(String name, double price, int quantity, double weight){
-        super(name, price, quantity);
+    public Vegetable(String name, double price, double weight){
+        super(name, price);
         this.weight = weight;
     }
-
-    // Methods
-
-
 }

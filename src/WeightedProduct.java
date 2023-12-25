@@ -4,8 +4,8 @@ public class WeightedProduct extends Product {
     private double weight;
 
     // Constructors
-    public WeightedProduct(String name, double price, int quantity, double weight) {
-        super(name, price, quantity);
+    public WeightedProduct(String name, double price, double weight) {
+        super(name, price);
         this.weight = weight;
     }
 
