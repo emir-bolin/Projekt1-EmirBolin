@@ -1,8 +1,6 @@
 public class Shop {
 
-
     // Constructors
-    public Shop(){}
-
-
+    public Shop() {
+    }
 }
