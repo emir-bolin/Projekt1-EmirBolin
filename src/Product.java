@@ -15,7 +15,6 @@ public class Product {
 
     // Methods
 
-
     // Getters & setters
     public String getName() {
         return name;
@@ -23,5 +22,13 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
