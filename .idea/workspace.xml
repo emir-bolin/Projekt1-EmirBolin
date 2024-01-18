@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44783ac3-7b09-443d-b168-6a1686813d7c" name="Changes" comment=".">
+    <list default="true" id="44783ac3-7b09-443d-b168-6a1686813d7c" name="Changes" comment="Added a menu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +65,8 @@
       <workItem from="1702990972444" duration="2188000" />
       <workItem from="1703252011445" duration="11854000" />
       <workItem from="1703683539949" duration="4136000" />
-      <workItem from="1705308996824" duration="3547000" />
+      <workItem from="1705308996824" duration="3652000" />
+      <workItem from="1705564596065" duration="6384000" />
     </task>
     <task id="LOCAL−00001" summary="v2">
       <option name="closed" value="true" />
@@ -131,7 +131,14 @@
       <option name="presentableId" value="LOCAL−00009" />
       <updated>1703687096364</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL−00010" summary="Added a menu">
+      <option name="closed" value="true" />
+      <created>1705313035861</created>
+      <option name="number" value="LOCAL−00010" />
+      <option name="presentableId" value="LOCAL−00010" />
+      <updated>1705313035861</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,6 +147,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="v2" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="Added a menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a menu" />
   </component>
 </project>
