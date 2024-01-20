@@ -1,25 +1,41 @@
 import java.util.ArrayList;
 
 public class Cart {
-    // Attributes
-    private ArrayList<Product> products = new ArrayList<Product>();
+    public static Product[] products;
+    private ArrayList<Product> cartProducts = new ArrayList<>();
     private double totalCost = 0.0;
 
-    // Constructors
     public Cart() {
     }
 
-    // Methods
-    public void addProduct(Product product) {
-        products.add(product);
-        totalCost += product.getPrice(); // Todo: detect if the product is a vegetable or dairy to calculate price
+    public void addProduct(Product product, double amount) {
+        // Handles different product types
+        if (product instanceof Dairy dairyProduct) {
+            totalCost += dairyProduct.calculateCost(amount);
+
+        } else {
+            Vegetable vegetableProduct = (Vegetable) product;
+            totalCost += vegetableProduct.calculateCost(amount);
+        }
+        cartProducts.add(product);
+    }
+
+    public void removeProduct(Product product) {
+        if (product instanceof Dairy dairyProduct) {
+            totalCost -= dairyProduct.calculateCost(amount);
+
+        } else {
+            Vegetable vegetableProduct = (Vegetable) product;
+            totalCost += vegetableProduct.calculateCost(amount);
+        }
+        cartProducts.add(product);
     }
 
     public void showCart() {
-        System.out.println("Cart Contents:");
-        for (Product product : products) {
-            System.out.println(product);
+        System.out.println("\nCart Contents:");
+        for (Product product : cartProducts) {
+            System.out.println(product.name + " " + product.price); // Todo: print quantity/weight
         }
-        System.out.println("\nTotal cost is: " + totalCost + " kr");
+        System.out.println("Total cost is: " + totalCost + " kr\n"); // Todo: fix calculatePrice method
     }
 }

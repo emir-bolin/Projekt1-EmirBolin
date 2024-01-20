@@ -13,8 +13,7 @@ public class Dairy extends Product {
     }
 
     // Methods
-    public double calculateCost() {
-        double cost = price * quantity;
-        return cost;
+    public double calculateCost(double amount) {
+        return price * quantity;
     }
 }

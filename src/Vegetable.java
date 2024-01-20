@@ -13,8 +13,7 @@ public class Vegetable extends Product {
     }
 
     // Methods
-    public double calculateCost() {
-        double cost = price * weight;
-        return cost;
+    public double calculateCost(double amount) {
+        return price * weight;
     }
 }
