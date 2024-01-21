@@ -4,52 +4,48 @@ public class Shop {
     private static Cart cart;
 
     public Shop() {
-        cart = new Cart();
-        Product egg = new Dairy("egg", 6.45, 100);
-        Product milk = new Dairy("milk", 15.95, 30);
-        Product cheese = new Dairy("cheese", 89.00, 25);
-        Product onion = new Vegetable("onion", 14.90, 20);
-        Product salad = new Vegetable("salad", 35.00, 15);
-        Product carrot = new Vegetable("carrot", 18.90, 10);
+        Product egg = new QuantityProduct("egg", 4.45, 100, 0);
+        Product milk = new QuantityProduct("milk", 15.95, 30, 0);
+        Product cheese = new QuantityProduct("cheese", 89.00, 25, 0);
+        Product onion = new WeightedProduct("onion", 14.90, 20.00, 0);
+        Product salad = new WeightedProduct("salad", 35.00, 15.00, 0);
+        Product carrot = new WeightedProduct("carrot", 18.90, 10.00, 0);
 
         Cart.products = new Product[]{egg, milk, cheese, onion, salad, carrot};
+        cart = new Cart();
         menu();
     }
 
     public static void menu() {
         Scanner scanner = new Scanner(System.in);
-        boolean wantsToExit = false;
 
-        while (!wantsToExit) {
-            System.out.println("Choose a number between 1 and 4 followed by enter.");
-            System.out.println("[1] Add product");
-            System.out.println("[2] Remove product");
-            System.out.println("[3] Show cart");
-            System.out.println("[4] Exit");
-            System.out.print("Input: ");
+        System.out.println("Choose a number between 1 and 4 followed by enter.");
+        System.out.println("[1] Add product");
+        System.out.println("[2] Remove product");
+        System.out.println("[3] Show cart");
+        System.out.println("[4] Sign out");
+        System.out.print("Input: ");
 
-            int input;
-            try {
-                input = scanner.nextInt(); // Todo: stop infinite loop when wrong input is typed in
+        int input;
+        try {
+            input = scanner.nextInt();
 
-                switch (input) {
-                    case 1 -> addProduct();
-                    // case 2 -> removeProduct();
-                    case 3 -> cart.showCart();
-                    case 4 -> wantsToExit = true;
-                }
-            } catch (Exception e) {
-                System.out.println("\nYou can only use numbers.\n");
+            switch (input) {
+                case 1 -> addProduct();
+                case 2 -> removeProduct();
+                case 3 -> cart.showCart();
+                case 4 -> System.exit(0);
             }
+        } catch (Exception e) {
+            System.out.println("\nYou can only use numbers.\n");
         }
+        menu();
     }
 
     private static void showAllProducts() {
-        System.out.println("\nDairy products:");
+        System.out.println("\nProducts:");
         for (Product product : Cart.products) {
-            if (product.getName().equals("onion")
-                System.out.println("\nVegetables:");
-            System.out.println(product.getName() + " " + product.getPrice() + "kr"); // Todo: print quantity/weight
+            System.out.println(product.getName() + " Price: " + product.getPrice() + "kr Stock: " + product.getStock());
         }
     }
 
@@ -74,11 +70,31 @@ public class Shop {
         Product selectedProduct = findProduct(input);
 
         if (selectedProduct != null) {
-            System.out.print("How much would you like in quantity or weight?\nInput: ");
-            double amount = scanner.nextDouble();
+            if (selectedProduct instanceof QuantityProduct) { // Todo: decrease stock
+                System.out.print("How much " + selectedProduct.getName() + " do you want?\nInput: ");
+                int amount = scanner.nextInt();
 
-            cart.addProduct(selectedProduct, amount);
-            System.out.println(selectedProduct.getName() + " was added to the cart.");
+                if (amount > selectedProduct.getStock()) {
+                    amount = (int) selectedProduct.getStock();
+                    System.out.println("There is only " + amount + " " + selectedProduct.getName() + " in stock");
+                }
+                selectedProduct.setStock(selectedProduct.getStock() - amount);
+                ((QuantityProduct) selectedProduct).setAmount(amount);
+                cart.addProduct(selectedProduct);
+                System.out.println(amount + " " + selectedProduct.getName() + " added to cart.");
+            } else {
+                System.out.print("How much " + selectedProduct.getName() + " in kg do you want?\nInput: ");
+                double amount = scanner.nextDouble();
+
+                if (amount > selectedProduct.getStock()) {
+                    amount = selectedProduct.getStock();
+                    System.out.println("There is only " + amount + " kg " + selectedProduct.getName() + " in stock");
+                }
+                selectedProduct.setStock(selectedProduct.getStock() - amount);
+                ((WeightedProduct) selectedProduct).setAmount(amount);
+                cart.addProduct(selectedProduct);
+                System.out.println(amount + " kg " + selectedProduct.getName() + " added to cart.");
+            }
         } else {
             System.out.println("Product not found.");
         }
@@ -89,13 +105,12 @@ public class Shop {
         String input;
 
         cart.showCart();
-        System.out.print("\nWhich product would you like to remove from the cart?\nInput: ");
+        System.out.print("Which product would you like to remove from the cart?\nInput: ");
         input = scanner.nextLine().toLowerCase();
         Product selectedProduct = findProduct(input);
 
         if (selectedProduct != null) {
             cart.removeProduct(selectedProduct);
-
             System.out.println(selectedProduct.getName() + " was removed from the cart.");
         } else {
             System.out.println("Product not found.");

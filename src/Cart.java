@@ -1,41 +1,40 @@
 import java.util.ArrayList;
 
 public class Cart {
-    public static Product[] products;
-    private ArrayList<Product> cartProducts = new ArrayList<>();
-    private double totalCost = 0.0;
+    // Attributes
+    private ArrayList<Product> myCart = new ArrayList<>();
+    public static Product[] products; // This is chooseable products
 
+    // Constructors
     public Cart() {
     }
 
-    public void addProduct(Product product, double amount) {
-        // Handles different product types
-        if (product instanceof Dairy dairyProduct) {
-            totalCost += dairyProduct.calculateCost(amount);
-
-        } else {
-            Vegetable vegetableProduct = (Vegetable) product;
-            totalCost += vegetableProduct.calculateCost(amount);
-        }
-        cartProducts.add(product);
+    public void addProduct(Product product) {
+        myCart.add(product);
     }
 
     public void removeProduct(Product product) {
-        if (product instanceof Dairy dairyProduct) {
-            totalCost -= dairyProduct.calculateCost(amount);
+        myCart.remove(product);
+    }
 
-        } else {
-            Vegetable vegetableProduct = (Vegetable) product;
-            totalCost += vegetableProduct.calculateCost(amount);
+    public int getNumberOfProducts() {
+        return myCart.size();
+    }
+
+    public double getTotalCost() {
+        double totalCost = 0;
+        for (Product product : myCart) {
+            totalCost += product.getTotalPrice();
         }
-        cartProducts.add(product);
+        return totalCost;
     }
 
     public void showCart() {
         System.out.println("\nCart Contents:");
-        for (Product product : cartProducts) {
-            System.out.println(product.name + " " + product.price); // Todo: print quantity/weight
+        for (Product product : myCart) {
+            double productTotalCost = product.getTotalPrice();
+            System.out.println("Product: " + product.getName() + " Cost: " + product.getPrice() + " * " + product.getAmount() + " = " + productTotalCost + " kr");
         }
-        System.out.println("Total cost is: " + totalCost + " kr\n"); // Todo: fix calculatePrice method
+        System.out.println("Total cost is: " + getTotalCost() + " kr\n");
     }
 }
