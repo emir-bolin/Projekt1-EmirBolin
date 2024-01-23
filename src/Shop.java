@@ -1,15 +1,24 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Shop class represents a simple shopping system with user carts and products
 public class Shop {
     // Attributes
     private ArrayList<Cart> carts = new ArrayList<>();
     private Cart currentCart;
     private static ArrayList<Product> products = new ArrayList<>();
 
-    // Constructors
+    // Constructor
     public Shop() {
-        Product egg = new QuantityProduct("egg", 4.45, 200, 0);
+        initializeProducts();
+        logInMenu(); // Start the login menu
+    }
+
+    // Methods
+
+    // Creates the products to the shop
+    private void initializeProducts() {
+        Product egg = new QuantityProduct("egg", 4.45, 200, 0); // Todo: should I keep amount?
         Product milk = new QuantityProduct("milk", 15.95, 80, 0);
         Product cheese = new QuantityProduct("cheese", 45.00, 50, 0);
         Product onion = new WeightedProduct("onion", 14.90, 20.00, 0);
@@ -21,12 +30,9 @@ public class Shop {
         products.add(onion);
         products.add(salad);
         products.add(carrot);
-
-        logInMenu();
-
     }
 
-    // Methods
+    // Handles user login or registration
     public void logInMenu() {
         Scanner scanner = new Scanner(System.in);
         String username;
@@ -41,13 +47,15 @@ public class Shop {
                 break;
             }
         }
+        // If user doesn't have a cart, create a new one
         if (!foundCart) {
             this.currentCart = new Cart(username);
             carts.add(this.currentCart);
         }
-        menu();
+        menu(); // Proceed to the main menu
     }
 
+    // Displays the main menu options and handles user input
     public void menu() {
         Scanner scanner = new Scanner(System.in);
 
@@ -71,9 +79,10 @@ public class Shop {
         } catch (Exception e) {
             System.out.println("\nYou can only use numbers.\n");
         }
-        menu();
+        menu(); // Recursive call to keep displaying the menu
     }
 
+    // Displays information about all available products
     private void showAllProducts() {
         System.out.println("\nProducts:");
         for (Product product : products) {
@@ -82,6 +91,7 @@ public class Shop {
         }
     }
 
+    // Checks if a product exists based on the user's input
     private Product findProduct(String input) {
         Product selectedProduct = null;
         for (Product product : products) {
@@ -93,6 +103,7 @@ public class Shop {
         return selectedProduct;
     }
 
+    // Adds a selected product to the user's cart
     private void addProduct() {
         Scanner scanner = new Scanner(System.in);
         String input;
@@ -103,6 +114,7 @@ public class Shop {
         Product selectedProduct = findProduct(input);
 
         if (selectedProduct != null) {
+            // Check if the product is QuantityProduct or WeightedProduct and handle accordingly
             if (selectedProduct instanceof QuantityProduct) { //
                 System.out.print("How much " + selectedProduct.getName() + " do you want?\nInput: ");
                 int amount = scanner.nextInt();
@@ -131,6 +143,7 @@ public class Shop {
         }
     }
 
+    // Removes a product from the user's cart
     private void removeProduct() {
         Scanner scanner = new Scanner(System.in);
         String input;

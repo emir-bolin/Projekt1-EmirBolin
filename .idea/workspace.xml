@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44783ac3-7b09-443d-b168-6a1686813d7c" name="Changes" comment="Changed names on variables&#10;Remake of product and cart class">
-      <change afterPath="$PROJECT_DIR$/src/AmountOfProduct.java" afterDir="false" />
+    <list default="true" id="44783ac3-7b09-443d-b168-6a1686813d7c" name="Changes" comment="Made user which have their own carts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AmountOfProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AmountOfProduct.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/QuantityProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QuantityProduct.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop.java" afterDir="false" />
@@ -74,7 +73,7 @@
       <workItem from="1705308996824" duration="3652000" />
       <workItem from="1705564596065" duration="6701000" />
       <workItem from="1705747914071" duration="28558000" />
-      <workItem from="1705914516799" duration="19801000" />
+      <workItem from="1705914516799" duration="23158000" />
     </task>
     <task id="LOCAL−00001" summary="v2">
       <option name="closed" value="true" />
@@ -167,7 +166,14 @@
       <option name="presentableId" value="LOCAL−00013" />
       <updated>1705863543439</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL−00014" summary="Made user which have their own carts">
+      <option name="closed" value="true" />
+      <created>1706024803898</created>
+      <option name="number" value="LOCAL−00014" />
+      <option name="presentableId" value="LOCAL−00014" />
+      <updated>1706024803898</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +186,7 @@
     <MESSAGE value="Fixed the menu and started working on how to add products." />
     <MESSAGE value="Finished the addProduct method and started working on the removeproduct method." />
     <MESSAGE value="Changed names on variables&#10;Remake of product and cart class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed names on variables&#10;Remake of product and cart class" />
+    <MESSAGE value="Made user which have their own carts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made user which have their own carts" />
   </component>
 </project>
