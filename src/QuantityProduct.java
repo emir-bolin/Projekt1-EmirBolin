@@ -13,14 +13,14 @@ public class QuantityProduct extends Product {
     }
 
     // Methods
+    public void updateAmount(double amount) {
+        this.amount += amount;
+        this.setStock(getStock() - amount);
+    }
 
     // Getters & setters
     @Override
     public double getAmount() {
         return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
     }
 }

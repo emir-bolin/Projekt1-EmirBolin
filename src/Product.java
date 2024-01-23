@@ -1,9 +1,9 @@
 // SUPER-class
 public abstract class Product {
     // Attributes
-    protected String name; // Todo: change to private
-    protected double price;
-    protected double stock;
+    private String name;
+    private double price;
+    private double stock;
 
     // Default Constructors
     public Product() {
@@ -13,11 +13,6 @@ public abstract class Product {
         this.name = name;
         this.price = price;
         this.stock = stock;
-    }
-
-    // Methods
-    public double calculateCost(double amount) {
-        return price * amount;
     }
 
     // Getters & setters
@@ -39,8 +34,5 @@ public abstract class Product {
 
     public abstract double getAmount();
 
-    public double getTotalPrice() {
-        return getPrice() * getAmount();
-    }
-
+    public abstract void updateAmount(double amount);
 }
