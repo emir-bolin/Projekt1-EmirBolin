@@ -6,7 +6,7 @@ public class WeightedProduct extends Product {
 
     // Constructor to initialize the attributes of the WeightedProduct
     public WeightedProduct(String name, double price, double stock, double amount) {
-        super(name, price, stock);
+        super(name, price, stock, "kg");
         this.amount = amount;
     }
 

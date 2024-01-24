@@ -29,10 +29,10 @@ public class Cart {
     }
 
     // Removes a product from the cart
-    public void removeProduct(String productName) { // Todo: when returning product, make amount positive
+    public void removeProduct(String productName) {
         for (AmountOfProduct item : myCart) {
             if (item.getProduct().getName().equals(productName)) {
-                item.getProduct().updateAmount(item.getAmount()); // Todo: when returning product, stop printing you can only use numbers
+                item.getProduct().updateAmount(-item.getAmount());
                 myCart.remove(item);
             }
 
@@ -41,11 +41,20 @@ public class Cart {
 
     // Displays the contents of the cart
     public void showCart() {
-        System.out.println("\n" + userName + "'s cart:");
-        for (AmountOfProduct item : myCart) {
-            System.out.println("Product: " + item.getProduct().getName() + " Cost: " + item.getProduct().getPrice() + " * " + item.getAmount() + " = " + item.getTotalPrice() + " kr");
+        if (!myCart.isEmpty()) {
+            System.out.println("\n" + userName + "'s cart:");
+            for (AmountOfProduct item : myCart) {
+                System.out.println(item.getProduct().getName() + " " + item.getProduct().getPrice() + " " + item.getProduct().getAmounttype() + " * " + item.getAmount() + " = " + item.getTotalPrice() + " kr");
+            }
+            System.out.println("Total cost is: " + getTotalCost() + " kr\n");
+        } else {
+            System.out.println("Cart is empty");
         }
-        System.out.println("Total cost is: " + getTotalCost() + " kr\n");
+    }
+
+    // Checks if cart is empty
+    public Boolean isEmpty() {
+        return myCart.isEmpty();
     }
 
     // Calculates and returns the total cost of all items in the cart

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // Shop class represents a simple shopping system with user carts and products
@@ -12,6 +13,7 @@ public class Shop {
     public Shop() {
         initializeProducts();
         logInMenu(); // Start the login menu
+        menu();
     }
 
     // Methods
@@ -52,7 +54,7 @@ public class Shop {
             this.currentCart = new Cart(username);
             carts.add(this.currentCart);
         }
-        menu(); // Proceed to the main menu
+        //menu(); // Proceed to the main menu
     }
 
     // Displays the main menu options and handles user input
@@ -64,9 +66,10 @@ public class Shop {
         System.out.println("[2] Remove product");
         System.out.println("[3] Show cart");
         System.out.println("[4] Sign out");
+        System.out.println("[5] Exit");
         System.out.print("Input: ");
 
-        int input;
+        int input = 0;
         try {
             input = scanner.nextInt();
 
@@ -75,9 +78,12 @@ public class Shop {
                 case 2 -> removeProduct();
                 case 3 -> this.currentCart.showCart();
                 case 4 -> logInMenu();
+                case 5 -> System.exit(0);
             }
+        } catch (InputMismatchException e) {
+            System.out.println("\nPlease follow the instructions regarding the numberformat.\n");
         } catch (Exception e) {
-            System.out.println("\nYou can only use numbers.\n");
+            System.out.println(e + "\nYou can only use numbers.\n"); // Todo: when returning product, stop printing you can only use numbers
         }
         menu(); // Recursive call to keep displaying the menu
     }
@@ -104,7 +110,7 @@ public class Shop {
     }
 
     // Adds a selected product to the user's cart
-    private void addProduct() {
+    private void addProduct() { // Todo: product should not be able to add when stock is 0
         Scanner scanner = new Scanner(System.in);
         String input;
 
@@ -114,8 +120,8 @@ public class Shop {
         Product selectedProduct = findProduct(input);
 
         if (selectedProduct != null) {
-            // Check if the product is QuantityProduct or WeightedProduct and handle accordingly
-            if (selectedProduct instanceof QuantityProduct) { //
+            // Checks if the product is QuantityProduct or WeightedProduct and handles accordingly
+            if (selectedProduct instanceof QuantityProduct) {
                 System.out.print("How much " + selectedProduct.getName() + " do you want?\nInput: ");
                 int amount = scanner.nextInt();
 
@@ -123,9 +129,13 @@ public class Shop {
                     amount = (int) selectedProduct.getStock();
                     System.out.println("There is only " + amount + " " + selectedProduct.getName() + " in stock");
                 }
-                ((QuantityProduct) selectedProduct).updateAmount(amount);
-                this.currentCart.addProduct(selectedProduct, amount);
-                System.out.println(amount + " " + selectedProduct.getName() + " added to cart.\n");
+                if (amount > 0) { // only numbers greater than 0 is allowed
+                    ((QuantityProduct) selectedProduct).updateAmount(amount);
+                    this.currentCart.addProduct(selectedProduct, amount);
+                    System.out.println(amount + " " + selectedProduct.getName() + " added to cart.\n");
+                } else {
+                    System.out.println("Only numbers greater than 0 is allowed");
+                }
             } else {
                 System.out.print("How much " + selectedProduct.getName() + " in kg do you want?\nInput: ");
                 double amount = scanner.nextDouble();
@@ -134,9 +144,13 @@ public class Shop {
                     amount = selectedProduct.getStock();
                     System.out.println("There is only " + amount + " kg " + selectedProduct.getName() + " in stock");
                 }
-                ((WeightedProduct) selectedProduct).updateAmount(amount);
-                this.currentCart.addProduct(selectedProduct, amount);
-                System.out.println(amount + " kg " + selectedProduct.getName() + " added to cart.\n");
+                if (amount > 0) { // only numbers greater than 0 is allowed
+                    ((WeightedProduct) selectedProduct).updateAmount(amount);
+                    this.currentCart.addProduct(selectedProduct, amount);
+                    System.out.println(amount + " kg " + selectedProduct.getName() + " added to cart.\n");
+                } else {
+                    System.out.println("Only numbers greater than 0 is allowed");
+                }
             }
         } else {
             System.out.println("Product not found.");
@@ -144,13 +158,17 @@ public class Shop {
     }
 
     // Removes a product from the user's cart
-    private void removeProduct() {
+    private void removeProduct() { // Todo: print cart is empty
         Scanner scanner = new Scanner(System.in);
         String input;
 
-        this.currentCart.showCart();
-        System.out.print("Which product would you like to remove from the cart?\nInput: ");
-        input = scanner.nextLine().toLowerCase();
-        this.currentCart.removeProduct(input);
+        if (!this.currentCart.isEmpty()) {
+            this.currentCart.showCart();
+            System.out.print("Which product would you like to remove from the cart?\nInput: ");
+            input = scanner.nextLine().toLowerCase();
+            this.currentCart.removeProduct(input);
+        } else {
+            System.out.println("Cart is empty");
+        }
     }
 }
