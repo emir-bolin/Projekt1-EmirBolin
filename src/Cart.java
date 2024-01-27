@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 // Represents a shopping cart associated with a user
 public class Cart {
@@ -30,12 +31,16 @@ public class Cart {
 
     // Removes a product from the cart
     public void removeProduct(String productName) {
-        for (AmountOfProduct item : myCart) {
+        Iterator<AmountOfProduct> iterator = myCart.iterator();
+
+        while (iterator.hasNext()) {
+            AmountOfProduct item = iterator.next();
+
             if (item.getProduct().getName().equals(productName)) {
                 item.getProduct().updateAmount(-item.getAmount());
-                myCart.remove(item);
+                iterator.remove(); // Use iterator to safely remove the item
+                break; // Break to stop further iterations
             }
-
         }
     }
 
@@ -44,7 +49,7 @@ public class Cart {
         if (!myCart.isEmpty()) {
             System.out.println("\n" + userName + "'s cart:");
             for (AmountOfProduct item : myCart) {
-                System.out.println(item.getProduct().getName() + " " + item.getProduct().getPrice() + " " + item.getProduct().getAmounttype() + " * " + item.getAmount() + " = " + item.getTotalPrice() + " kr");
+                System.out.println(item.getProduct().getName() + " " + item.getProduct().getPrice() + " " + item.getProduct().getAmountType() + " * " + item.getAmount() + " = " + item.getTotalPrice() + " kr");
             }
             System.out.println("Total cost is: " + getTotalCost() + " kr\n");
         } else {

@@ -5,14 +5,14 @@ public abstract class Product {
     private String name;
     private double price;
     private double stock;
-    private String amounttype;
+    private String amountType;
 
     // Default constructor with parameters to initialize the product attributes
-    public Product(String name, double price, double stock, String amounttype) {
+    public Product(String name, double price, double stock, String amountType) {
         this.name = name;
         this.price = price;
         this.stock = stock;
-        this.amounttype = amounttype;
+        this.amountType = amountType;
     }
 
     // Getters & setters
@@ -32,8 +32,8 @@ public abstract class Product {
         return stock;
     }
 
-    public String getAmounttype() {
-        return amounttype;
+    public String getAmountType() {
+        return amountType;
     }
 
     // Updates the stock of the product

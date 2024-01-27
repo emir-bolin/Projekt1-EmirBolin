@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44783ac3-7b09-443d-b168-6a1686813d7c" name="Changes" comment="Added comments to the code">
+    <list default="true" id="44783ac3-7b09-443d-b168-6a1686813d7c" name="Changes" comment="Small bugs were fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/QuantityProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QuantityProduct.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WeightedProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeightedProduct.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +71,8 @@
       <workItem from="1705564596065" duration="6701000" />
       <workItem from="1705747914071" duration="28558000" />
       <workItem from="1705914516799" duration="23216000" />
-      <workItem from="1706116074284" duration="7206000" />
+      <workItem from="1706116074284" duration="7758000" />
+      <workItem from="1706371652739" duration="4041000" />
     </task>
     <task id="LOCAL−00001" summary="v2">
       <option name="closed" value="true" />
@@ -180,7 +179,14 @@
       <option name="presentableId" value="LOCAL−00015" />
       <updated>1706028181694</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL−00016" summary="Small bugs were fixed">
+      <option name="closed" value="true" />
+      <created>1706123883464</created>
+      <option name="number" value="LOCAL−00016" />
+      <option name="presentableId" value="LOCAL−00016" />
+      <updated>1706123883464</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +201,7 @@
     <MESSAGE value="Changed names on variables&#10;Remake of product and cart class" />
     <MESSAGE value="Made user which have their own carts" />
     <MESSAGE value="Added comments to the code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added comments to the code" />
+    <MESSAGE value="Small bugs were fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small bugs were fixed" />
   </component>
 </project>

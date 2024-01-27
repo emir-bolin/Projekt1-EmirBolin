@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // Shop class represents a simple shopping system with user carts and products
@@ -49,7 +48,7 @@ public class Shop {
                 break;
             }
         }
-        // If user doesn't have a cart, create a new one
+        // If user does not have a cart, create a new one
         if (!foundCart) {
             this.currentCart = new Cart(username);
             carts.add(this.currentCart);
@@ -61,7 +60,7 @@ public class Shop {
     public void menu() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Choose a number between 1 and 4 followed by enter.");
+        System.out.println("Choose a number between 1 and 5 followed by enter");
         System.out.println("[1] Add product");
         System.out.println("[2] Remove product");
         System.out.println("[3] Show cart");
@@ -80,16 +79,14 @@ public class Shop {
                 case 4 -> logInMenu();
                 case 5 -> System.exit(0);
             }
-        } catch (InputMismatchException e) {
-            System.out.println("\nPlease follow the instructions regarding the numberformat.\n");
         } catch (Exception e) {
-            System.out.println(e + "\nYou can only use numbers.\n"); // Todo: when returning product, stop printing you can only use numbers
+            System.out.println(e + "\nYou can only use numbers.\n");
         }
         menu(); // Recursive call to keep displaying the menu
     }
 
     // Displays information about all available products
-    private void showAllProducts() {
+    public void showAllProducts() {
         System.out.println("\nProducts:");
         for (Product product : products) {
             if (product.getStock() != 0)
@@ -98,7 +95,7 @@ public class Shop {
     }
 
     // Checks if a product exists based on the user's input
-    private Product findProduct(String input) {
+    public Product findProduct(String input) {
         Product selectedProduct = null;
         for (Product product : products) {
             if (product.getName().toLowerCase().equals(input)) {
@@ -110,7 +107,7 @@ public class Shop {
     }
 
     // Adds a selected product to the user's cart
-    private void addProduct() { // Todo: product should not be able to add when stock is 0
+    public void addProduct() { //
         Scanner scanner = new Scanner(System.in);
         String input;
 
@@ -153,22 +150,38 @@ public class Shop {
                 }
             }
         } else {
-            System.out.println("Product not found.");
+            System.out.println("Product not found");
         }
     }
 
     // Removes a product from the user's cart
-    private void removeProduct() { // Todo: print cart is empty
+    public void removeProduct() {
         Scanner scanner = new Scanner(System.in);
-        String input;
 
         if (!this.currentCart.isEmpty()) {
             this.currentCart.showCart();
             System.out.print("Which product would you like to remove from the cart?\nInput: ");
-            input = scanner.nextLine().toLowerCase();
+            String input = scanner.nextLine().toLowerCase();
+
+            // Keep a reference to the cart before and after the removal
+            double initialTotalCost = this.currentCart.getTotalCost();
+            Cart removedProductCart = new Cart(this.currentCart.getUserName());
+            removedProductCart.getMyCart().addAll(this.currentCart);
+
+            // Attempt to remove the product
             this.currentCart.removeProduct(input);
+
+            // Check if the removal was successful
+            double finalTotalCost = this.currentCart.getTotalCost();
+            if (finalTotalCost < initialTotalCost) {
+                double removedAmount = initialTotalCost - finalTotalCost;
+                System.out.println(removedAmount + " " + input + " removed from  cart");
+            } else {
+                System.out.println("Product not found in cart.");
+            }
         } else {
-            System.out.println("Cart is empty");
+            System.out.println("Cart is empty\n");
         }
     }
+
 }
