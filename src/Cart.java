@@ -39,6 +39,7 @@ public class Cart {
             if (item.getProduct().getName().equals(productName)) {
                 item.getProduct().updateAmount(-item.getAmount());
                 iterator.remove(); // Use iterator to safely remove the item
+                System.out.println(productName + " removed from cart\n");
                 break; // Break to stop further iterations
             }
         }

@@ -157,28 +157,13 @@ public class Shop {
     // Removes a product from the user's cart
     public void removeProduct() {
         Scanner scanner = new Scanner(System.in);
+        String input;
 
         if (!this.currentCart.isEmpty()) {
             this.currentCart.showCart();
             System.out.print("Which product would you like to remove from the cart?\nInput: ");
-            String input = scanner.nextLine().toLowerCase();
-
-            // Keep a reference to the cart before and after the removal
-            double initialTotalCost = this.currentCart.getTotalCost();
-            Cart removedProductCart = new Cart(this.currentCart.getUserName());
-            removedProductCart.getMyCart().addAll(this.currentCart);
-
-            // Attempt to remove the product
+            input = scanner.nextLine().toLowerCase();
             this.currentCart.removeProduct(input);
-
-            // Check if the removal was successful
-            double finalTotalCost = this.currentCart.getTotalCost();
-            if (finalTotalCost < initialTotalCost) {
-                double removedAmount = initialTotalCost - finalTotalCost;
-                System.out.println(removedAmount + " " + input + " removed from  cart");
-            } else {
-                System.out.println("Product not found in cart.");
-            }
         } else {
             System.out.println("Cart is empty\n");
         }

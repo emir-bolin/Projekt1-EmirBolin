@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44783ac3-7b09-443d-b168-6a1686813d7c" name="Changes" comment="Small bugs were fixed">
+    <list default="true" id="44783ac3-7b09-443d-b168-6a1686813d7c" name="Changes" comment="Some bugs were fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +71,8 @@
       <workItem from="1705747914071" duration="28558000" />
       <workItem from="1705914516799" duration="23216000" />
       <workItem from="1706116074284" duration="7758000" />
-      <workItem from="1706371652739" duration="4041000" />
+      <workItem from="1706371652739" duration="4538000" />
+      <workItem from="1706430938488" duration="477000" />
     </task>
     <task id="LOCAL−00001" summary="v2">
       <option name="closed" value="true" />
@@ -186,7 +186,14 @@
       <option name="presentableId" value="LOCAL−00016" />
       <updated>1706123883464</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL−00017" summary="Some bugs were fixed">
+      <option name="closed" value="true" />
+      <created>1706376250201</created>
+      <option name="number" value="LOCAL−00017" />
+      <option name="presentableId" value="LOCAL−00017" />
+      <updated>1706376250201</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,6 +209,7 @@
     <MESSAGE value="Made user which have their own carts" />
     <MESSAGE value="Added comments to the code" />
     <MESSAGE value="Small bugs were fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small bugs were fixed" />
+    <MESSAGE value="Some bugs were fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some bugs were fixed" />
   </component>
 </project>
