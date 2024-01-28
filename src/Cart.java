@@ -41,7 +41,7 @@ public class Cart {
             myCart.add(new CartProduct(product, amount));
         }
         if (amount > 0)
-            System.out.println(amount + product.getAmountType() + product.getName() + " added to cart.\n"); // Todo: make it integer
+            System.out.println(amount + product.getAmountType() + product.getName() + " added to cart.\n");
     }
 
     // Removes a product from the cart

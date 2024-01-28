@@ -43,10 +43,6 @@ public abstract class Product {
         return stock;
     }
 
-    public String getStockAsString() {
-        return "" + Double.toString(stock).replaceAll(".0", "") + getAmountType();
-    }
-
     // Updates the stock of the product
     public void setStock(double stock) {
         this.stock = stock;
@@ -56,9 +52,6 @@ public abstract class Product {
     public String getAmountType() {
         return amountType;
     }
-
-    // Abstract method to get the amount of the product (implementation of amount varies in subclasses)
-    public abstract double getAmount();
 
     // Abstract method to update the amount of the product (implementation of amount varies in subclasses)
     public abstract void updateAmount(double amount);

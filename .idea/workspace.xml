@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44783ac3-7b09-443d-b168-6a1686813d7c" name="Changes" comment="Added comments to code&#10;shortened the addProduct() method">
+    <list default="true" id="44783ac3-7b09-443d-b168-6a1686813d7c" name="Changes" comment="CartProduct better name. Adding shop  in  nicer way. Exceptionhandling.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AmountOfProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CartProduct.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WeightedProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeightedProduct.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +90,7 @@
       <workItem from="1705914516799" duration="23216000" />
       <workItem from="1706116074284" duration="7758000" />
       <workItem from="1706371652739" duration="4538000" />
-      <workItem from="1706430938488" duration="23916000" />
+      <workItem from="1706430938488" duration="25907000" />
     </task>
     <task id="LOCAL−00001" summary="v2">
       <option name="closed" value="true" />
@@ -228,7 +225,14 @@
       <option name="presentableId" value="LOCAL−00019" />
       <updated>1706443297526</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL−00020" summary="CartProduct better name. Adding shop  in  nicer way. Exceptionhandling.">
+      <option name="closed" value="true" />
+      <created>1706467260389</created>
+      <option name="number" value="LOCAL−00020" />
+      <option name="presentableId" value="LOCAL−00020" />
+      <updated>1706467260389</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,17 +262,7 @@
     <MESSAGE value="Some bugs were fixed" />
     <MESSAGE value="Shortened the removeProduct() method" />
     <MESSAGE value="Added comments to code&#10;shortened the addProduct() method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added comments to code&#10;shortened the addProduct() method" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Cart.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="CartProduct better name. Adding shop  in  nicer way. Exceptionhandling." />
+    <option name="LAST_COMMIT_MESSAGE" value="CartProduct better name. Adding shop  in  nicer way. Exceptionhandling." />
   </component>
 </project>

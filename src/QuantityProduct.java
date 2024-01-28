@@ -17,12 +17,4 @@ public class QuantityProduct extends Product {
         this.amount += (int) amount;
         this.setStock(getStock() - amount);
     }
-
-    // Getters & setters
-
-    // Returns the amount of the product
-    @Override
-    public double getAmount() {
-        return amount;
-    }
 }
