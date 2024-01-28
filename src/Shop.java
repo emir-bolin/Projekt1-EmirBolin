@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // Shop class represents a simple shopping system with user carts and products
@@ -12,34 +13,38 @@ public class Shop {
     public Shop() {
         initializeProducts();
         logInMenu(); // Start the login menu
-        menu();
+        shopInterface();
     }
 
     // Methods
 
     // Creates the products to the shop
     private void initializeProducts() {
-        Product egg = new QuantityProduct("egg", 4.45, 200, 0);
-        Product milk = new QuantityProduct("milk", 15.95, 80, 0);
-        Product cheese = new QuantityProduct("cheese", 45.00, 50, 0);
-        Product onion = new WeightedProduct("onion", 14.90, 20.00, 0);
-        Product salad = new WeightedProduct("salad", 35.00, 30.00, 0);
-        Product carrot = new WeightedProduct("carrot", 18.90, 25.00, 0);
-        products.add(egg);
-        products.add(milk);
-        products.add(cheese);
-        products.add(onion);
-        products.add(salad);
-        products.add(carrot);
+        products.add(new QuantityProduct("egg", 4.45, 200, 0));
+        products.add(new QuantityProduct("milk", 15.95, 80, 0));
+        products.add(new QuantityProduct("cheese", 45.00, 50, 0));
+        products.add(new WeightedProduct("onion", 14.90, 20.00, 0));
+        products.add(new WeightedProduct("salad", 35.00, 30.00, 0));
+        products.add(new WeightedProduct("carrot", 18.90, 25.00, 0));
     }
 
     // Handles user login or registration
-    public void logInMenu() {
+    private void logInMenu() {
         Scanner scanner = new Scanner(System.in);
         String username;
         System.out.print("Log in with your username\nInput: ");
         username = scanner.nextLine();
 
+        boolean cartExists = findCart(username);
+
+        // If user does not have a cart, create a new one
+        if (!cartExists) {
+            this.currentCart = new Cart(username);
+            carts.add(this.currentCart);
+        }
+    }
+
+    private boolean findCart(String username) {
         boolean foundCart = false;
         for (Cart cart : carts) {
             if (cart.getUserName().equals(username)) {
@@ -48,16 +53,11 @@ public class Shop {
                 break;
             }
         }
-        // If user does not have a cart, create a new one
-        if (!foundCart) {
-            this.currentCart = new Cart(username);
-            carts.add(this.currentCart);
-        }
-        //menu(); // Proceed to the main menu
+        return foundCart;
     }
 
     // Displays the main menu options and handles user input
-    public void menu() {
+    private void shopInterface() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Choose a number between 1 and 5 followed by enter");
@@ -79,35 +79,37 @@ public class Shop {
                 case 4 -> logInMenu();
                 case 5 -> System.exit(0);
             }
+        } catch (InputMismatchException e) {
+            System.out.println("You can only use numbers.\n");
         } catch (Exception e) {
-            System.out.println(e + "\nYou can only use numbers.\n");
+            System.out.println(e + "\n");
         }
-        menu(); // Recursive call to keep displaying the menu
+        shopInterface(); // Recursive call to keep displaying the menu
     }
 
     // Displays information about all available products
-    public void showAllProducts() {
+    private void showAllProducts() {
         System.out.println("\nProducts:");
         for (Product product : products) {
-            if (product.getStock() != 0)
-                System.out.println(product.getName() + " Price: " + product.getPrice() + "kr Stock: " + product.getStock());
+            System.out.println(product.getName() + " Price: " + product.getPrice() + "kr Stock: " + product.getStock());
         }
     }
 
-    // Checks if a product exists based on the user's input
-    public Product findProduct(String input) {
+    // Checks if a product exists in shop based on the user's input
+    private Product findProduct(String input) {
         Product selectedProduct = null;
         for (Product product : products) {
             if (product.getName().toLowerCase().equals(input)) {
                 selectedProduct = product;
-                break;
+                return selectedProduct;
             }
         }
+        System.out.println("Product not found in shop\n");
         return selectedProduct;
     }
 
     // Adds a selected product to the user's cart
-    public void addProduct() { //
+    private void addProduct() { //
         Scanner scanner = new Scanner(System.in);
         String input;
 
@@ -117,23 +119,25 @@ public class Shop {
         Product selectedProduct = findProduct(input);
 
         if (selectedProduct != null) {
+            if (!(selectedProduct.getStock() > 0)) {
+                System.out.println(selectedProduct.getName() + " is out of stock\n");
+                return; // Early return
+            }
             // Checks if the product is QuantityProduct or WeightedProduct and handles accordingly
             if (selectedProduct instanceof QuantityProduct) {
                 System.out.print("How much " + selectedProduct.getName() + " do you want?\nInput: ");
                 int amount = scanner.nextInt();
-                this.currentCart.updateCart(selectedProduct, amount);
+                this.currentCart.updateCartWithProduct(selectedProduct, amount);
             } else {
-                System.out.print("How much " + selectedProduct.getName() + " in kg do you want?\nInput: ");
+                System.out.print("How much " + selectedProduct.getName() + " in kg do you want (i.e. 2,4)?\nInput: ");
                 double amount = scanner.nextDouble();
-                this.currentCart.updateCart(selectedProduct, amount);
+                this.currentCart.updateCartWithProduct(selectedProduct, amount);
             }
-        } else {
-            System.out.println("Product not found");
         }
     }
 
     // Removes a product from the user's cart
-    public void removeProduct() {
+    private void removeProduct() {
         Scanner scanner = new Scanner(System.in);
         String input;
 
@@ -141,10 +145,9 @@ public class Shop {
             this.currentCart.showCart();
             System.out.print("Which product would you like to remove from the cart?\nInput: ");
             input = scanner.nextLine().toLowerCase();
-            this.currentCart.removeProduct(input);
+            this.currentCart.removeProductFromCart(input);
         } else {
             System.out.println("Cart is empty\n");
         }
     }
-
 }

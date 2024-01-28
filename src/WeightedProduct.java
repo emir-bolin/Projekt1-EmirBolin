@@ -19,7 +19,7 @@ public class WeightedProduct extends Product {
     }
 
     // Getters & setters
-    
+
     // Returns the amount of the product
     @Override
     public double getAmount() {

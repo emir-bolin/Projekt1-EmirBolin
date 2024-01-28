@@ -18,8 +18,8 @@ public abstract class Product {
     //Method
 
     // Returns true if amount is less than stock
-    public boolean isInStock(double amount) {
-        if (amount > getStock()) {
+    public boolean isInStock(double wantedAmount) {
+        if (wantedAmount > getStock()) {
             System.out.println("There is only " + getStock() + getAmountType() + getName() + " in stock");
             return false;
         }
@@ -41,6 +41,10 @@ public abstract class Product {
     // Returns the available stock of the product
     public double getStock() {
         return stock;
+    }
+
+    public String getStockAsString() {
+        return "" + Double.toString(stock).replaceAll(".0", "") + getAmountType();
     }
 
     // Updates the stock of the product

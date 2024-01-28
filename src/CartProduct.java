@@ -1,11 +1,11 @@
 // Represents a combination of a product and its quantity in the cart
-public class AmountOfProduct {
+public class CartProduct {
     // Attributes
     private final Product product;
     private double amount;
 
     // Constructor with parameters to initialize the product and its amount
-    public AmountOfProduct(Product product, double amount) {
+    public CartProduct(Product product, double amount) {
         this.product = product;
         this.amount = amount;
     }
