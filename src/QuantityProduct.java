@@ -6,7 +6,7 @@ public class QuantityProduct extends Product {
 
     // Constructor to initialize the attributes of the QuantityProduct
     public QuantityProduct(String name, double price, double stock, int amount) {
-        super(name, price, stock, "");
+        super(name, price, stock, " ");
         this.amount = amount;
     }
 
@@ -14,7 +14,7 @@ public class QuantityProduct extends Product {
 
     // Updates the amount of the product and adjusts the stock accordingly
     public void updateAmount(double amount) {
-        this.amount += amount;
+        this.amount += (int) amount;
         this.setStock(getStock() - amount);
     }
 

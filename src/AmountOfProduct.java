@@ -1,7 +1,7 @@
-// Represents a combination of a product and its quantity
+// Represents a combination of a product and its quantity in the cart
 public class AmountOfProduct {
     // Attributes
-    private Product product;
+    private final Product product;
     private double amount;
 
     // Constructor with parameters to initialize the product and its amount

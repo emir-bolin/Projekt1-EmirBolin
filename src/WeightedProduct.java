@@ -6,7 +6,7 @@ public class WeightedProduct extends Product {
 
     // Constructor to initialize the attributes of the WeightedProduct
     public WeightedProduct(String name, double price, double stock, double amount) {
-        super(name, price, stock, "kg");
+        super(name, price, stock, " kg ");
         this.amount = amount;
     }
 
@@ -19,7 +19,7 @@ public class WeightedProduct extends Product {
     }
 
     // Getters & setters
-
+    
     // Returns the amount of the product
     @Override
     public double getAmount() {

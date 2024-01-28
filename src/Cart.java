@@ -14,8 +14,21 @@ public class Cart {
 
     // Methods
 
+    // Entry point for updating the cart
+    public void updateCart(Product selectedProduct, double amount) {
+        if (amount > 0) { // only numbers greater than 0 is allowed
+            if (!selectedProduct.isInStock(amount)) {
+                amount = selectedProduct.getStock(); // Decrease number of added products to correspond a stock
+            }
+            selectedProduct.updateAmount(amount);
+            this.addProduct(selectedProduct, amount);
+        } else {
+            System.out.println("Only numbers greater than 0 is allowed");
+        }
+    }
+
     // Adds a product to the cart or updates the quantity if the product is already in the cart
-    public void addProduct(Product product, double amount) {
+    private void addProduct(Product product, double amount) { // Private because it is used from updateCart()
         boolean foundProduct = false;
         for (AmountOfProduct amountOfProduct : myCart) {
             if (amountOfProduct.getProduct().getName().equals(product.getName())) {
@@ -27,6 +40,7 @@ public class Cart {
         if (!foundProduct) {
             myCart.add(new AmountOfProduct(product, amount));
         }
+        System.out.println(amount + product.getAmountType() + product.getName() + " added to cart.\n");
     }
 
     // Removes a product from the cart

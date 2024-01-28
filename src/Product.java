@@ -15,6 +15,17 @@ public abstract class Product {
         this.amountType = amountType;
     }
 
+    //Method
+
+    // Returns true if amount is less than stock
+    public boolean isInStock(double amount) {
+        if (amount > getStock()) {
+            System.out.println("There is only " + getStock() + getAmountType() + getName() + " in stock");
+            return false;
+        }
+        return true;
+    }
+
     // Getters & setters
 
     // Returns the product name
@@ -32,18 +43,19 @@ public abstract class Product {
         return stock;
     }
 
-    public String getAmountType() {
-        return amountType;
-    }
-
     // Updates the stock of the product
     public void setStock(double stock) {
         this.stock = stock;
     }
 
-    // Abstract method to get the amount of the product (implementation varies in subclasses)
+    // Returns the type of the amount
+    public String getAmountType() {
+        return amountType;
+    }
+
+    // Abstract method to get the amount of the product (implementation of amount varies in subclasses)
     public abstract double getAmount();
 
-    // Abstract method to update the amount of the product (implementation varies in subclasses)
+    // Abstract method to update the amount of the product (implementation of amount varies in subclasses)
     public abstract void updateAmount(double amount);
 }

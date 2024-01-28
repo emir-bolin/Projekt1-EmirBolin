@@ -6,7 +6,7 @@ public class Shop {
     // Attributes
     private ArrayList<Cart> carts = new ArrayList<>();
     private Cart currentCart;
-    private static ArrayList<Product> products = new ArrayList<>();
+    private ArrayList<Product> products = new ArrayList<>();
 
     // Constructor
     public Shop() {
@@ -19,7 +19,7 @@ public class Shop {
 
     // Creates the products to the shop
     private void initializeProducts() {
-        Product egg = new QuantityProduct("egg", 4.45, 200, 0); // Todo: should I keep amount?
+        Product egg = new QuantityProduct("egg", 4.45, 200, 0);
         Product milk = new QuantityProduct("milk", 15.95, 80, 0);
         Product cheese = new QuantityProduct("cheese", 45.00, 50, 0);
         Product onion = new WeightedProduct("onion", 14.90, 20.00, 0);
@@ -68,7 +68,7 @@ public class Shop {
         System.out.println("[5] Exit");
         System.out.print("Input: ");
 
-        int input = 0;
+        int input;
         try {
             input = scanner.nextInt();
 
@@ -121,33 +121,11 @@ public class Shop {
             if (selectedProduct instanceof QuantityProduct) {
                 System.out.print("How much " + selectedProduct.getName() + " do you want?\nInput: ");
                 int amount = scanner.nextInt();
-
-                if (amount > selectedProduct.getStock()) {
-                    amount = (int) selectedProduct.getStock();
-                    System.out.println("There is only " + amount + " " + selectedProduct.getName() + " in stock");
-                }
-                if (amount > 0) { // only numbers greater than 0 is allowed
-                    ((QuantityProduct) selectedProduct).updateAmount(amount);
-                    this.currentCart.addProduct(selectedProduct, amount);
-                    System.out.println(amount + " " + selectedProduct.getName() + " added to cart.\n");
-                } else {
-                    System.out.println("Only numbers greater than 0 is allowed");
-                }
+                this.currentCart.updateCart(selectedProduct, amount);
             } else {
                 System.out.print("How much " + selectedProduct.getName() + " in kg do you want?\nInput: ");
                 double amount = scanner.nextDouble();
-
-                if (amount > selectedProduct.getStock()) {
-                    amount = selectedProduct.getStock();
-                    System.out.println("There is only " + amount + " kg " + selectedProduct.getName() + " in stock");
-                }
-                if (amount > 0) { // only numbers greater than 0 is allowed
-                    ((WeightedProduct) selectedProduct).updateAmount(amount);
-                    this.currentCart.addProduct(selectedProduct, amount);
-                    System.out.println(amount + " kg " + selectedProduct.getName() + " added to cart.\n");
-                } else {
-                    System.out.println("Only numbers greater than 0 is allowed");
-                }
+                this.currentCart.updateCart(selectedProduct, amount);
             }
         } else {
             System.out.println("Product not found");
